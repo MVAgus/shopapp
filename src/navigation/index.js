@@ -18,5 +18,5 @@ return (
     </Stack.Navigator>
 </NavigationContainer>
 )
-}
+};
 export default AppNavigation;
