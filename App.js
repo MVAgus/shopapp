@@ -14,13 +14,7 @@ import React from 'react';
 const App = () => {
   
   return (
-    <SafeAreaView style={backgroundStyle}>
-      
-        <View style = {styles.container}>
-          <Text>Hello world!</Text>
-        </View>
-    
-    </SafeAreaView>
+    <AppNavigation/>
   );
 };
 
