@@ -1,21 +1,9 @@
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  useColorScheme,
-} from 'react-native';
-
 import AppNavigation from './src/navigation';
 import React from 'react';
+import {StyleSheet} from 'react-native';
 
 const App = () => {
-  
-  return (
-    <AppNavigation/>
-  );
+  return <AppNavigation />;
 };
 
 const styles = StyleSheet.create({
@@ -23,8 +11,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 });
-
 
 export default App;
