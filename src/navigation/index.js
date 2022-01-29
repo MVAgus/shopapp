@@ -23,7 +23,19 @@ const AppNavigation = () => {
                 }
             }} >
                 <Stack.Screen name="Categories" component={Categories} />
-                <Stack.Screen name="Products" component={Products} />
+                {/*en el caso de que querramos que la vista tenga un nombre en particular
+                vamos a utilizar options = {{title: 'titulo}}*/}
+                <Stack.Screen 
+                name="Products" 
+                component={Products}
+                options={({route}) => ({
+                    title:route.params.name,
+                    headerStyle: {
+                        backgroundColor: route.params.color
+                    }})}
+                
+                
+                />
                 <Stack.Screen name="ProductDetail" component={ProductDetail} />
             </Stack.Navigator>
         </NavigationContainer>
