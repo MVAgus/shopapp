@@ -1,25 +1,52 @@
 import {
-   Button,
+   FlatList,
    SafeAreaView,
-   Text,
-   View
+   View,
 } from 'react-native';
+import React, { useEffect } from 'react';
+import { filterBreads, selectBread } from '../../store/actions/breads.action';
 
-import React from 'react';
+import { BREADS } from '../../utils/data/breads';
+import ProductItem from '../../components/products-item/index';
 import styles from './styles';
 
-const Products = ({navigation}) => {
+const Products = ({navigation, route}) => {
+  
+  
+  
+  const handleSelectedProduct = (item) => {
+    dispatch(selectBread(item.id));
+    navigation.navigate('ProductDetail', 
+      {
+        name: item.name,
+      }
+    );
+  }
+
+  const renderProducts= ({item}) => {
+    return (
+      <ProductItem item={item} onSelected={handleSelectedProduct} />
+    )
+  }
+
+  useEffect(() => {
+    dispatch(filterBreads(category.id));
+  }, [])
+
    return (
-     <SafeAreaView style={styles.container}>
-       <View style={styles.container}>
-         <Text>Products</Text>
-         <Button title="Go to Product Detail" onPress={() => navigation.navigate('ProductDetail')} />
-         <Button title="Go back" onPress={() => navigation.goBack()}/>
-       </View>
-     </SafeAreaView>
+    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+      <FlatList
+         data={categoryBreads}
+         renderItem={renderProducts}
+         keyExtractor={item => item.id}
+       />
+    </View>
+  </SafeAreaView>
    );
  };
  
  
  
  export default Products;
+ 
