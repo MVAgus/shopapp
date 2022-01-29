@@ -11,7 +11,14 @@ const AppNavigation = () => {
     return (
         <NavigationContainer >
             <Stack.Navigator initialRouteName='Categories' >
-                <Stack.Screen name="Categories" component={Categories} />
+                <Stack.Screen name="Categories" component={Categories} options={{title: 'Home',
+            headerStyle: {
+                backgroundColor: '#f4511e',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },}} />
                 <Stack.Screen name="Products" component={Products} />
                 <Stack.Screen name="ProductDetail" component={ProductDetail} />
             </Stack.Navigator>
