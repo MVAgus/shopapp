@@ -14,6 +14,7 @@ const Products = ({navigation}) => {
        <View style={styles.container}>
          <Text>Products</Text>
          <Button title="Go to Product Detail" onPress={() => navigation.navigate('ProductDetail')} />
+         <Button title="Go back" onPress={() => navigation.goBack()}/>
        </View>
      </SafeAreaView>
    );
