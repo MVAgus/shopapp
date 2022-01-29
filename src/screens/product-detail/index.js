@@ -13,7 +13,8 @@ const ProductDetail = ({navigation}) => {
      <SafeAreaView style={styles.container}>
        <View style={styles.container}>
          <Text>Product Detail</Text>
-        
+        <Button title = "Pop to Top" onPress={()=> navigation.popToTop()}/>
+        {/*el pop to top lo que hace es llevarte a la primera vista que se encuentra dentro del stack de navegacion */}
        </View>
      </SafeAreaView>
    );
