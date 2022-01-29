@@ -7,14 +7,17 @@ import {
 
 import React from 'react';
 import styles from './styles';
+import { useSelector } from 'react-redux';
 
-const ProductDetail = ({navigation}) => {
+const ProductDetail = ({navigation, route}) => {
+   const bread = useSelector(state => state.breads.selected);
    return (
      <SafeAreaView style={styles.container}>
        <View style={styles.container}>
-         <Text>Product Detail</Text>
-        <Button title = "Pop to Top" onPress={()=> navigation.popToTop()}/>
-        {/*el pop to top lo que hace es llevarte a la primera vista que se encuentra dentro del stack de navegacion */}
+         <Text>{bread.name}</Text>
+         <Text>{bread.description}</Text>
+         <Text>{bread.weight}</Text>
+         <Text>$ {bread.price}</Text>
        </View>
      </SafeAreaView>
    );
@@ -23,3 +26,4 @@ const ProductDetail = ({navigation}) => {
  
  
  export default ProductDetail;
+ 
