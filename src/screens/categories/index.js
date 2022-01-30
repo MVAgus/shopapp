@@ -1,13 +1,11 @@
 import {
-   Button,
-   FlatList,
-   SafeAreaView,
-   Text,
-   View
+  FlatList,
+  SafeAreaView,
+  View
 } from 'react-native';
 
 import {CATEGORIES} from '../../utils/data/categories';
-import CategoryItem from '../../components/categories';
+import CategoryItem from '../../components/categories-item';
 import React from 'react';
 import styles from './styles';
 
