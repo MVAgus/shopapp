@@ -3,22 +3,22 @@ import {
    SafeAreaView,
    View,
 } from 'react-native';
-import React, { useEffect } from 'react';
-import { filterBreads, selectBread } from '../../store/actions/breads.action';
 
 import { BREADS } from '../../utils/data/breads';
 import ProductItem from '../../components/products-item/index';
+import React from 'react';
 import styles from './styles';
 
 const Products = ({navigation, route}) => {
-  
-  
+  const breads = BREADS.filter(bread => bread.category === route.params.categoryId)
   
   const handleSelectedProduct = (item) => {
-    dispatch(selectBread(item.id));
+    
     navigation.navigate('ProductDetail', 
       {
+        productId: item.id,
         name: item.name,
+        product: item
       }
     );
   }
@@ -29,15 +29,12 @@ const Products = ({navigation, route}) => {
     )
   }
 
-  useEffect(() => {
-    dispatch(filterBreads(category.id));
-  }, [])
-
+  
    return (
     <SafeAreaView style={styles.container}>
     <View style={styles.container}>
       <FlatList
-         data={categoryBreads}
+         data={breads}
          renderItem={renderProducts}
          keyExtractor={item => item.id}
        />
@@ -45,8 +42,6 @@ const Products = ({navigation, route}) => {
   </SafeAreaView>
    );
  };
- 
- 
  
  export default Products;
  
