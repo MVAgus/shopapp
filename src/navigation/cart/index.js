@@ -1,15 +1,16 @@
-import {COLORS} from '../../utils/constants/colors';
-import Cart from "../../screens/cart";
-import { Platform } from "react-native";
-import React from "react";
+import { COLORS } from '../../utils/constants/colors';
+import Cart from '../../screens/cart';
+import { Platform } from 'react-native';
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
 const CartStackNavigation = () => {
     return (
-        
-            <Stack.Navigator initialRouteName='Cart'
-             screenOptions={{
+        <Stack.Navigator
+            initialRouteName='Cart'
+            screenOptions={{
                 headerStyle: {
                     backgroundColor: Platform.OS === 'android' ? COLORS.primary : '',
                 },
@@ -17,14 +18,11 @@ const CartStackNavigation = () => {
                 headerTitleStyle: {
                     fontWeight: 'bold'
                 }
-            }} >
-                
-                <Stack.Screen 
-                name="Cart" 
-                component={Cart}
-                />
-            </Stack.Navigator>
-        
+            }}
+        >
+            <Stack.Screen name="Cart" component={Cart} />
+            
+        </Stack.Navigator>
     )
 }
 
