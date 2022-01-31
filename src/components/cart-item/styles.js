@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 const { height } = Dimensions.get("window");
 
@@ -29,10 +29,4 @@ const styles = StyleSheet.create({
   });
 
 
-  export default styles;
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
+
