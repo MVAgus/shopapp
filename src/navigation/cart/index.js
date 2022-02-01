@@ -1,5 +1,6 @@
 import { COLORS } from '../../utils/constants/colors';
 import Cart from '../../screens/cart';
+import Orders from '../../screens/orders';
 import { Platform } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -21,6 +22,7 @@ const CartStackNavigation = () => {
             }}
         >
             <Stack.Screen name="Cart" component={Cart} />
+            <Stack.Screen name="Order" component ={Orders}/>
             
         </Stack.Navigator>
     )
