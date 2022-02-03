@@ -16,9 +16,7 @@ const Products = ({navigation, route}) => {
     
     navigation.navigate('ProductDetail', 
       {
-        productId: item.id,
         name: item.name,
-        product: item
       }
     );
   }
