@@ -1,4 +1,5 @@
 import {CATEGORIES} from '../../utils/data/categories';
+import { SELECT_CATEGORY } from '../actions/category.action';
 
 {/*este reductor importa la data de las categorias y tendra un estado inicial
 que contendra la lista de categorias y la categoria seleccionada*/}
@@ -8,7 +9,17 @@ selected: null
 }
 
 const CategoryReducer = (state = initialState, action) => {
-    return state;
+    switch(action.type) {
+        case SELECT_CATEGORY:
+            const indexCategory = state.categories.findIndex(category => category.id === action.categoryId);
+            if(indexCategory === -1) return state
+            return {
+                ...state,
+                selected: state.categories[indexCategory]
+            }
+        default: 
+            return state;
+    }
 }
 
 export default CategoryReducer;
