@@ -1,4 +1,3 @@
-import { CART } from '../../utils/data/cart';
 
 const initialState = {
     items: [],
