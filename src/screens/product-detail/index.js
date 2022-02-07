@@ -22,8 +22,10 @@ const ProductDetail = ({navigation, route}) => {
          <Text>{bread.description}</Text>
          <Text>{bread.weight}</Text>
          <Text>$ {bread.price}</Text>
-         <Button title="Agregar al carrito" onPress={() => handleAddItemCart()} />
        </View>
+       <View style = {styles.addToCart}>
+         <Button onPress={() => handleAddItemCart()} title="Agregar al carrito"/>
+         </View>
      </SafeAreaView>
    );
  };
