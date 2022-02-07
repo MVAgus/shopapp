@@ -1,9 +1,10 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 
 import BreadReducer from "./reducers/bread.reducer";
 import CartReducer from "./reducers/cart.reducer";
 import CategoryReducer from "./reducers/category.reducer";
 import OrderReducer from "./reducers/order.reducer";
+import thunk from 'redux-thunk';
 
 {/*este archivo se utiliza como root del directorio de store. 
     En este se configura como se combinan nuestros reducers que usaremos
@@ -16,4 +17,4 @@ const RootReducer = combineReducers({
     orders: OrderReducer
 })
 
-export default createStore(RootReducer);
+export default createStore(RootReducer,applyMiddleware(thunk));
