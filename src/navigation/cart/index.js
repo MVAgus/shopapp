@@ -22,7 +22,7 @@ const CartStackNavigation = () => {
             }}
         >
             <Stack.Screen name="Cart" component={Cart} />
-            <Stack.Screen name="Order" component ={Orders}/>
+            <Stack.Screen name="Orders" component ={Orders}/>
             
         </Stack.Navigator>
     )
