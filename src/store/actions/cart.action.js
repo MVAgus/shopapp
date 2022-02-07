@@ -17,6 +17,9 @@ export const removeItem = itemId => ({
 export const confirmCart = (payload, total) => {
     return async dispatch => {
         try {
+            {/*el metodo fetch nos permite realizar consultas a la base de datos o a un servicio
+            el metodo post nos permite escribir en la base de datos*/
+            /*la cabecera se utiliza para entender que se dato se esta pasando como referencia*/}
             const response = await fetch(`${URL_API}/orders.json`, {
                 method: 'POST',
                 headers: {
@@ -35,6 +38,7 @@ export const confirmCart = (payload, total) => {
                 confirm: true,
             })
         } catch (error) {
+        {/*con el error.message nos retorna el mensaje de error que nos da la BD*/}
             console.warn(error.message);
         }
     }
