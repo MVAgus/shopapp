@@ -5,6 +5,11 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
+      
+    },
+    addToCart: {
+      flex: 0.5,
+      marginBottom:1
     }
   });
 
