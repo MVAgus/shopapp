@@ -5,11 +5,51 @@ import { signin, signup } from '../../store/actions/auth.action';
 import { styles } from './styles'
 import { useDispatch } from 'react-redux'
 
+const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
+
+export const formReducer = (state, action) => {
+    if(action.type === FORM_INPUT_UPDATE) {
+        const inputValues = {
+            ...state.inputValues,
+            [action.input]: action.value
+        }
+
+        const inputValidities = {
+            ...state.inputValidities,
+            [action.input]: action.isValid
+        }
+
+        let formIsValid = true;
+
+        for(const key in inputValidities) {
+            formIsValid = formIsValid && inputValidities[key];
+        }
+
+        return {
+            formIsValid,
+            inputValidities,
+            inputValues
+        }
+    }
+
+    return state;
+}
+
 const Auth = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isLogin, setIsLogin] = useState(true);
-
+    const [formState, formDispatch] = useReducer(formReducer, {
+        inputValues: {
+            email: '',
+            password: ''
+        },
+        inputValidities: {
+            email: false,
+            password: false
+        },
+        formIsValid: false
+    })
     const dispatch = useDispatch();
     const  handleAuth= () => {
         if(isLogin) {
@@ -19,6 +59,15 @@ const Auth = ({ navigation }) => {
             dispatch(signup(email, password))
         }
     }
+
+    const handlerInputChange = useCallback((inputIndetifier, inputValue, inputValidity) => {
+        formDispatch({
+            type: FORM_INPUT_UPDATE,
+            value: inputValue,
+            isValid: inputValidity,
+            input: inputIndetifier
+        });
+    }, [formDispatch]);
 
     return (
         <KeyboardAvoidingView style={styles.container} behavior="height" enabled>
