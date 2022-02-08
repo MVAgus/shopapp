@@ -1,41 +1,14 @@
-import CartStackNavigation from './cart';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import AuthNavigator from './auth';
+import BottomTabsNavigator from './bottom-tab';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import ShopStackNavigation from './shop';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-const BottomTabs = createBottomTabNavigator();
+import { useSelector } from 'react-redux';
 
 const AppNavigation = () => {
+    const isAuth = useSelector(state => state.auth.userId);
     return (
         <NavigationContainer >
-            <BottomTabs.Navigator initialRouteName='Shop'
-            screenOptions={{
-                headerShown: false,
-                
-            }}>
-                <BottomTabs.Screen
-                    name='Shop'
-                    component={ShopStackNavigation}
-                    options={{
-                        tabBarIcon: ({focused}) => (
-                            <Ionicons name = 'home-outline' size = {23}/>
-                        )
-                    }} 
-                        
-                />
-                <BottomTabs.Screen
-                    name='Cart'
-                    component={CartStackNavigation}
-                    options={{
-                        tabBarIcon: ({focused}) => (
-                            <Ionicons name = 'cart-outline' size = {23}/>
-                        )
-                    }} 
-                    />
-            </BottomTabs.Navigator>
-            
+            {isAuth ? <BottomTabsNavigator /> : <AuthNavigator />}
         </NavigationContainer>
     )
 }
